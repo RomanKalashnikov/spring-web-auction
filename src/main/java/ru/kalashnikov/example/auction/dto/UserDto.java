@@ -1,19 +1,12 @@
-package ru.kalashnikov.example.auction.entity;
+package ru.kalashnikov.example.auction.dto;
 
-import javax.persistence.*;
 
-@Entity
-@Table(name = "USR")
-public class User {
-    @Id
-    @GeneratedValue(generator = "GENERATOR_ID")
+public class UserDto  {
     private Long id;
-    @Column(nullable = false)
     private String name;
-    @Column(nullable = false)
     private String address;
-    @Column(nullable = false)
     private Integer age;
+
 
     public Long getId() {
         return id;

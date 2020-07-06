@@ -1,21 +1,56 @@
 package ru.kalashnikov.example.auction.entity;
 
-import lombok.Data;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
-@Data
 @Entity
 @Table(name = "BET")
 public class Bet {
     @Id
     @GeneratedValue(generator = "GENERATOR_ID")
-    Long betId;
+   private Long betId;
     @Column(nullable = false)
-    BigDecimal amount;
+    private BigDecimal amount;
     @Column(nullable = false)
-    LocalDateTime initTime;
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
+    private LocalDateTime initTime;
 
+    @OneToOne(optional = false, mappedBy = "currentBet")
+    private Item item;
+
+    public Item getItem() {
+        return item;
+    }
+
+    public void setItem(Item item) {
+        this.item = item;
+    }
+
+    public Long getBetId() {
+        return betId;
+    }
+
+    public void setBetId(Long betId) {
+        this.betId = betId;
+    }
+
+    public BigDecimal getAmount() {
+        return amount;
+    }
+
+    public void setAmount(BigDecimal amount) {
+        this.amount = amount;
+    }
+
+    public LocalDateTime getInitTime() {
+        return initTime;
+    }
+
+    public void setInitTime(LocalDateTime initTime) {
+        this.initTime = initTime;
+    }
 }

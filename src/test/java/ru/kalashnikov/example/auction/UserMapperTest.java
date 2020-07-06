@@ -1,29 +1,31 @@
 package ru.kalashnikov.example.auction;
 
 import org.junit.jupiter.api.Test;
-import org.mapstruct.factory.Mappers;
 import org.springframework.boot.test.context.SpringBootTest;
-import ru.kalashnikov.example.auction.DTO.UserDto;
+import org.springframework.stereotype.Component;
+import ru.kalashnikov.example.auction.dto.UserDto;
 import ru.kalashnikov.example.auction.entity.User;
-import ru.kalashnikov.example.auction.mapper.UserMapper;
+import ru.kalashnikov.example.auction.mapper.CustomMapper;
+import ru.kalashnikov.example.auction.mapper.CustomUserMapperImpl;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
+@Component
 class UserMapperTest {
-    private final UserMapper userMapper = Mappers.getMapper(UserMapper.class);
+
+    private final CustomMapper<User, UserDto> userMapper = new CustomUserMapperImpl() ;
 
     @Test
-    void testNull() {
+    void testNotNull() {
         User user = userMapper.toDomain(null);
-        assertNull(user);
+        assertNotNull(user);
     }
 
     @Test
     void testDTO() {
         User user = userMapper.toDomain(new UserDto());
-        assertEquals(user, new User());
+        assertEquals(new User(),user);
     }
 
     @Test
@@ -31,9 +33,14 @@ class UserMapperTest {
         UserDto userDto = new UserDto();
         userDto.setId((long) 222);
         userDto.setName("Doch");
+        userDto.setAge(22);
+        userDto.setAddress("asdasdw");
+
         User user = userMapper.toDomain(userDto);
         assertEquals(userDto.getId(), user.getId());
         assertEquals(userDto.getName(), user.getName());
+        assertEquals(userDto.getAddress(),user.getAddress());
+        assertEquals(userDto.getAge(),user.getAge());
     }
 
 }

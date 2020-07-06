@@ -1,29 +1,28 @@
-package ru.kalashnikov.example.auction.entity;
+package ru.kalashnikov.example.auction.dto;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import ru.kalashnikov.example.auction.entity.Bet;
 
-import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
-@Entity
-@Table(name = "ITEM")
-public class Item {
-    @Id
-    @GeneratedValue(generator = "GENERATOR_ID")
+public class ItemDto {
     private Long id;
-    private String name;
-    @ManyToOne
-    private User seller;
 
-    @Column(nullable = false)
+    private Long sellerId;
+
+    private String name;
+
     private BigDecimal initPrice;
 
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime biddingStartTime;
 
     private Integer biddingPeriod;
 
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime completionTime;
-    @OneToOne
+
     private Bet currentBet;
 
     public Long getId() {
@@ -34,20 +33,20 @@ public class Item {
         this.id = id;
     }
 
+    public Long getSellerId() {
+        return sellerId;
+    }
+
+    public void setSellerId(Long sellerId) {
+        this.sellerId = sellerId;
+    }
+
     public String getName() {
         return name;
     }
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public User getSeller() {
-        return seller;
-    }
-
-    public void setSeller(User seller) {
-        this.seller = seller;
     }
 
     public BigDecimal getInitPrice() {
