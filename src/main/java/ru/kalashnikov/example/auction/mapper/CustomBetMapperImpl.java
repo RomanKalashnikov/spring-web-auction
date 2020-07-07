@@ -11,19 +11,19 @@ import java.util.List;
 public class CustomBetMapperImpl implements CustomMapper<Bet, BetDto> {
     @Override
     public Bet toDomain(BetDto betDto) {
-        if(betDto == null){
+        if (betDto == null) {
             return new Bet();
         }
         Bet bet = new Bet();
         bet.setBetId(betDto.getId());
         bet.setInitTime(betDto.getInitTime());
         bet.setAmount(betDto.getAmount());
-        return  bet;
+        return bet;
     }
 
     @Override
     public BetDto toDTO(Bet bet) {
-        if(bet == null){
+        if (bet == null) {
             return new BetDto();
         }
         BetDto betDto = new BetDto();
@@ -37,7 +37,7 @@ public class CustomBetMapperImpl implements CustomMapper<Bet, BetDto> {
 
     @Override
     public List<Bet> toDomainList(List<BetDto> customDtoList) {
-        if(customDtoList.isEmpty()){
+        if (customDtoList == null || customDtoList.isEmpty()) {
             return new ArrayList<>();
         }
         ArrayList<Bet> bets = new ArrayList<>();
@@ -49,7 +49,7 @@ public class CustomBetMapperImpl implements CustomMapper<Bet, BetDto> {
 
     @Override
     public List<BetDto> toDTOList(List<Bet> list) {
-        if(list.isEmpty()){
+        if (list == null || list.isEmpty()) {
             return new ArrayList<>();
         }
         ArrayList<BetDto> betDtos = new ArrayList<>();
@@ -61,13 +61,13 @@ public class CustomBetMapperImpl implements CustomMapper<Bet, BetDto> {
 
     @Override
     public Bet merge(Bet bet, BetDto betDto) {
-        if(betDto.getAmount()!=null){
+        if (betDto.getAmount() != null) {
             bet.setAmount(betDto.getAmount());
         }
-        if(betDto.getId()!=null){
+        if (betDto.getId() != null) {
             bet.setBetId(betDto.getId());
         }
-        if(betDto.getInitTime()!=null){
+        if (betDto.getInitTime() != null) {
             bet.setInitTime(betDto.getInitTime());
         }
         return bet;

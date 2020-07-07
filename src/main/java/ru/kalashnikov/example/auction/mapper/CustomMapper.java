@@ -1,8 +1,5 @@
 package ru.kalashnikov.example.auction.mapper;
 
-import ru.kalashnikov.example.auction.dto.UserDto;
-import ru.kalashnikov.example.auction.entity.User;
-
 import java.util.List;
 public interface CustomMapper<Domain, Dto> {
     Domain toDomain(Dto dto);

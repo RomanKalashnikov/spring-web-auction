@@ -6,11 +6,12 @@ import ru.kalashnikov.example.auction.entity.Item;
 
 import java.util.ArrayList;
 import java.util.List;
+
 @Component
 public class CustomItemMapperImpl implements CustomMapper<Item, ItemDto> {
     @Override
     public Item toDomain(ItemDto itemDto) {
-        if(itemDto == null){
+        if (itemDto == null) {
             return new Item();
         }
         Item item = new Item();
@@ -26,7 +27,7 @@ public class CustomItemMapperImpl implements CustomMapper<Item, ItemDto> {
 
     @Override
     public ItemDto toDTO(Item item) {
-        if (item == null){
+        if (item == null) {
             return new ItemDto();
         }
         ItemDto itemDto = new ItemDto();
@@ -44,7 +45,7 @@ public class CustomItemMapperImpl implements CustomMapper<Item, ItemDto> {
 
     @Override
     public List<Item> toDomainList(List<ItemDto> customDtoList) {
-        if(customDtoList.isEmpty()){
+        if (customDtoList == null || customDtoList.isEmpty()) {
             return new ArrayList<>();
         }
         ArrayList<Item> items = new ArrayList<>();
@@ -56,7 +57,7 @@ public class CustomItemMapperImpl implements CustomMapper<Item, ItemDto> {
 
     @Override
     public List<ItemDto> toDTOList(List<Item> list) {
-        if(list.isEmpty()){
+        if (list == null || list.isEmpty()) {
             return new ArrayList<>();
         }
         ArrayList<ItemDto> itemDtos = new ArrayList<>();
@@ -68,25 +69,25 @@ public class CustomItemMapperImpl implements CustomMapper<Item, ItemDto> {
 
     @Override
     public Item merge(Item item, ItemDto itemDto) {
-        if(itemDto.getBiddingPeriod() != null){
+        if (itemDto.getBiddingPeriod() != null) {
             item.setBiddingPeriod(itemDto.getBiddingPeriod());
         }
-        if(itemDto.getBiddingStartTime() != null){
-            item.setBiddingStartTime(itemDto.getBiddingStartTime()) ;
+        if (itemDto.getBiddingStartTime() != null) {
+            item.setBiddingStartTime(itemDto.getBiddingStartTime());
         }
-        if(itemDto.getCompletionTime() != null){
+        if (itemDto.getCompletionTime() != null) {
             item.setCompletionTime(itemDto.getCompletionTime());
         }
-        if(itemDto.getCurrentBet()!= null){
+        if (itemDto.getCurrentBet() != null) {
             item.setCurrentBet(itemDto.getCurrentBet());
         }
-        if(itemDto.getId()!=null){
+        if (itemDto.getId() != null) {
             item.setId(itemDto.getId());
         }
-        if(itemDto.getInitPrice() !=null){
+        if (itemDto.getInitPrice() != null) {
             item.setInitPrice(itemDto.getInitPrice());
         }
-        if(itemDto.getName()!=null){
+        if (itemDto.getName() != null) {
             item.setName(itemDto.getName());
         }
         return item;
