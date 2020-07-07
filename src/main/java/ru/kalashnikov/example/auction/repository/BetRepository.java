@@ -6,6 +6,4 @@ import ru.kalashnikov.example.auction.entity.Bet;
 
 @Repository
 public interface BetRepository extends CrudRepository<Bet, Long> {
-// ХЗ что тут в типе крудрепозитория
-
 }

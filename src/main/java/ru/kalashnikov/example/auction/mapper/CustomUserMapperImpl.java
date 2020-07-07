@@ -39,7 +39,7 @@ public class CustomUserMapperImpl implements CustomMapper<User, UserDto> {
 
     @Override
     public List<User> toDomainList(List<UserDto> customDtoList) {
-        if (customDtoList.isEmpty()) {
+        if (customDtoList == null || customDtoList.isEmpty()) {
             return new ArrayList<>();
         }
         ArrayList<User> users = new ArrayList<>();
@@ -51,7 +51,7 @@ public class CustomUserMapperImpl implements CustomMapper<User, UserDto> {
 
     @Override
     public List<UserDto> toDTOList(List<User> list) {
-        if (list.isEmpty()) {
+        if (list == null ||list.isEmpty() ) {
             return new ArrayList<>();
         }
         ArrayList<UserDto> userDtos = new ArrayList<>();

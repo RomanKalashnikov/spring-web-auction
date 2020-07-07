@@ -54,8 +54,6 @@ public class BetService implements CustomService {
             }
         }
 
-
-        //TODO проверить время завешения торго лота > чем мы пытаемся поставить и обновить время ставки на этом Bet. и блять сделать как же там сервер рассчитвает время .
         if (LocalDateTime.now().isAfter(item.getCompletionTime())) {
             throw new RuntimeException("Вы опоздали. Торги уже завершены");
         }
