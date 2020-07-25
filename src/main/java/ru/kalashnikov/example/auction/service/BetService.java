@@ -1,5 +1,6 @@
 package ru.kalashnikov.example.auction.service;
 
+import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
@@ -18,17 +19,18 @@ import java.util.Optional;
 
 @Component
 @Slf4j
+@AllArgsConstructor
 public class BetService implements CustomService {
     private final BetRepository betRepository;
     private final ItemRepository itemRepository;
 
-    private final CustomMapper<Bet, BetDto> betMapper;
+    private final CustomMapper<Bet,BetDto> betMapper;
 
-    public BetService(BetRepository betRepository, ItemRepository itemRepository, CustomMapper<Bet, BetDto> betMapper) {
-        this.betRepository = betRepository;
-        this.itemRepository = itemRepository;
-        this.betMapper = betMapper;
-    }
+//    public BetService(BetRepository betRepository, ItemRepository itemRepository, CustomMapper<Bet, BetDto> betMapper) {
+//        this.betRepository = betRepository;
+//        this.itemRepository = itemRepository;
+//        this.betMapper = betMapper;
+//    }
 
     public List<BetDto> getAllBet() {
         List<Bet> repositoryAll = (List<Bet>) betRepository.findAll();

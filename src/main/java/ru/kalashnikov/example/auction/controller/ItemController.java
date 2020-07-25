@@ -18,18 +18,18 @@ public class ItemController {
     }
 
     @GetMapping
-    private List<ItemDto> getAllBet() {
+    public List<ItemDto> getAllBet() {
         return  itemService.getAllBet();
     }
 
     @PostMapping
-    private ItemDto create(@RequestBody ItemDto itemDto) {
+    public ItemDto create(@RequestBody ItemDto itemDto) {
         log.info("Item {}", itemDto);
         return itemService.create(itemDto);
     }
 
     @GetMapping("/{item}")
-    private ItemDto getItem(@PathVariable("id") Long id) {
+    public ItemDto getItem(@PathVariable("id") Long id) {
        return itemService.getItem(id);
 
     }

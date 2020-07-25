@@ -1,5 +1,6 @@
 package ru.kalashnikov.example.auction.service;
 
+import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 import ru.kalashnikov.example.auction.dto.UserDto;
@@ -12,15 +13,16 @@ import java.util.Optional;
 
 @Component
 @Slf4j
+@AllArgsConstructor
 public class UserService implements CustomService {
     private final UserRepository repository;
 
-    private final CustomMapper<User, UserDto> userMapper;
+    private final CustomMapper<User,UserDto> userMapper ;
 
-    public UserService(UserRepository repository, CustomMapper<User, UserDto> userMapper) {
-        this.repository = repository;
-        this.userMapper = userMapper;
-    }
+//    public UserService(UserRepository repository, CustomMapper<User, UserDto> userMapper) {
+//        this.repository = repository;
+//        this.userMapper = userMapper;
+//    }
 
     public List<UserDto> getAllUser() {
         List<User> repositoryAll = (List<User>) repository.findAll();

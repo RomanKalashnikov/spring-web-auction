@@ -1,5 +1,6 @@
 package ru.kalashnikov.example.auction.service;
 
+import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 import ru.kalashnikov.example.auction.dto.ItemDto;
@@ -14,16 +15,16 @@ import java.util.Optional;
 
 @Component
 @Slf4j
+@AllArgsConstructor
 public class ItemService implements CustomService {
     private final ItemRepository itemRepository;
     private final UserRepository userRepository;
-    private final CustomMapper<Item, ItemDto> itemMapper;
-
-    public ItemService(ItemRepository itemRepository, UserRepository userRepository, CustomMapper<Item, ItemDto> itemMapper) {
-        this.itemRepository = itemRepository;
-        this.userRepository = userRepository;
-        this.itemMapper = itemMapper;
-    }
+    private final CustomMapper<Item,ItemDto> itemMapper ;
+//    public ItemService(ItemRepository itemRepository, UserRepository userRepository, CustomMapper<Item, ItemDto> itemMapper) {
+//        this.itemRepository = itemRepository;
+//        this.userRepository = userRepository;
+//        this.itemMapper = itemMapper;
+//    }
 
     public List<ItemDto> getAllBet() {
         List<Item> repositoryAllItem = (List<Item>) itemRepository.findAll();

@@ -18,17 +18,17 @@ public class BetController {
     }
 
     @GetMapping
-    private List<BetDto> getAllBet() {
+    public List<BetDto> getAllBet() {
         return betService.getAllBet();
     }
 
     @PostMapping
-    private BetDto create(@RequestBody BetDto betDto) {
+    public BetDto create(@RequestBody BetDto betDto) {
         return betService.create(betDto);
     }
 
     @GetMapping("/{id}")
-    private BetDto getBet(@PathVariable("id") Long id) {
+    public BetDto getBet(@PathVariable("id") Long id) {
         return betService.getBet(id);
     }
 
