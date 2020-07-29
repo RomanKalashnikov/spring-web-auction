@@ -2,12 +2,17 @@ package ru.kalashnikov.example.auction.service;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.mapstruct.Mapper;
+import org.mapstruct.Mappings;
+import org.mapstruct.ap.internal.model.source.Mapping;
+import org.mapstruct.factory.Mappers;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 import org.springframework.web.server.ResponseStatusException;
 import ru.kalashnikov.example.auction.dto.BetDto;
 import ru.kalashnikov.example.auction.entity.Bet;
 import ru.kalashnikov.example.auction.entity.Item;
+import ru.kalashnikov.example.auction.mapper.BetMapper;
 import ru.kalashnikov.example.auction.mapper.CustomMapper;
 import ru.kalashnikov.example.auction.repository.BetRepository;
 import ru.kalashnikov.example.auction.repository.ItemRepository;
@@ -23,9 +28,8 @@ import java.util.Optional;
 public class BetService implements CustomService {
     private final BetRepository betRepository;
     private final ItemRepository itemRepository;
-
     private final CustomMapper<Bet,BetDto> betMapper;
-
+    private final BetMapper mapper = Mappers.getMapper(BetMapper.class);
 //    public BetService(BetRepository betRepository, ItemRepository itemRepository, CustomMapper<Bet, BetDto> betMapper) {
 //        this.betRepository = betRepository;
 //        this.itemRepository = itemRepository;
@@ -38,6 +42,7 @@ public class BetService implements CustomService {
         log.info("ReposResp {}", repositoryAll);
         return betMapper.toDTOList(repositoryAll);
     }
+
 
     public BetDto create( BetDto betDto) {
         log.info("Bet {}", betDto);

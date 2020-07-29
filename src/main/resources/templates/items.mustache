@@ -1,0 +1,50 @@
+<html lang="en">
+<body>
+<div>
+
+    <form method="post">
+        <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
+        <input type="number" name="sellerId" placeholder="Введите id продавца"/>
+        <input type="text" name="name" placeholder="имя"/>
+        <input type="text" name="initPrice" placeholder="price"/>
+        <input type="datetime-local" name="biddingStartTime" placeholder="startTime"/>
+        <input type="number" name="biddingPeriod" placeholder="period"/>
+        <button type="submit">"Add</button>
+    </form>
+</div>
+<div> Список пользователей</div>
+<form method="post" action="filter">
+    <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
+    <input type="text" name="item">
+    <button type="submit">Find</button>
+</form>
+{{#item}}
+    <div>
+        <td>ID: {{id}}|</td>
+        <td>Name: {{name}}|</td>
+        <td>Ignition Price:{{initPrice}}|</td>
+        <td>Binding Start Time: {{biddingStartTime}}|</td>
+        <td>Binding Period: {{biddingPeriod}}|</td>
+        Current Bet :{{#usr}}|
+        <div>
+            <b>{{id}}</b>
+            <span> {{amount}}</span>
+            <time> {{initTime}}</time>
+            <i>{{item}}</i>
+
+        </div>
+    {{/usr}}
+
+    </div>
+{{/item}}
+
+<p>Click <a href="/users">here</a> to see a users.</p>
+<p>Click <a href="/bets">here</a> to see a bets.</p>
+
+<form action="logout" method="post">
+    <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
+    <input type="submit" value="Sign Out"/>
+</form>
+</body>
+
+</html>

@@ -35,6 +35,13 @@ public class UserService implements CustomService {
 
         return userMapper.toDTO(user);
     }
+    public UserDto create(String name,String address, Integer age) {
+
+        User user = userMapper.toDomainWithParam(name,address,age);
+        repository.save(user);
+
+        return userMapper.toDTO(user);
+    }
     public UserDto getUser(Long id) {
         Optional<User> byId = repository.findById(id);
         if (byId.isEmpty()) {

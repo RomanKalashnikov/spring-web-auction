@@ -10,6 +10,11 @@ import java.util.List;
 @Component
 public class CustomItemMapperImpl implements CustomMapper<Item, ItemDto> {
     @Override
+    public Item toDomainWithParam(String name, String address, Integer age) {
+        return null;
+    }
+
+    @Override
     public Item toDomain(ItemDto itemDto) {
         if (itemDto == null) {
             return new Item();

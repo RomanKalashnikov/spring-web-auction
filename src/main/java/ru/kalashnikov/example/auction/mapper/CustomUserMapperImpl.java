@@ -12,6 +12,19 @@ public class CustomUserMapperImpl implements CustomMapper<User, UserDto> {
 
 
     @Override
+    public User toDomainWithParam(String name, String address, Integer age) {
+        if (name == null && address == null && age == null) {
+            return new User();
+        }
+        User user = new User();
+        user.setId(user.getId());
+        user.setName(name);
+        user.setAddress(address);
+        user.setAge(age);
+        return user;
+    }
+
+    @Override
     public User toDomain(UserDto userDto) {
         if (userDto == null) {
             return new User();

@@ -9,6 +9,12 @@ import java.util.List;
 
 @Component
 public class CustomBetMapperImpl implements CustomMapper<Bet, BetDto> {
+
+    @Override
+    public Bet toDomainWithParam(String name, String address, Integer age) {
+        return null;
+    }
+
     @Override
     public Bet toDomain(BetDto betDto) {
         if (betDto == null) {
